@@ -205,10 +205,10 @@
     </div>
 
     <script>
-        // Predefined Google Spreadsheet URL
-        const sheetDbApiUrl = 'https://sheetdb.io/api/v1/vqe73unkshywj'; // Replace this with your actual endpoint
+        // Predefined Google Spreadsheet API URL
+        const sheetDbApiUrl = 'https://sheetdb.io/api/v1/vqe73unkshywj'; // Replace with your actual API
 
-        // Function to load appointments from the provided Google Spreadsheet URL
+        // Function to load appointments from Google Spreadsheet
         async function loadAppointments() {
             const appointmentList = document.getElementById("appointment-list").getElementsByTagName("tbody")[0];
             appointmentList.innerHTML = ""; // Clear previous data
@@ -225,32 +225,37 @@
                     return;
                 }
 
-                // Reverse the appointments to show the newest first
-                appointments.reverse();
+                appointments.reverse(); // Show newest first
 
                 appointments.forEach((data) => {
                     const row = appointmentList.insertRow();
 
-                    const nameCell = row.insertCell();
-                    nameCell.textContent = data.name;
-
-                    const phoneCell = row.insertCell();
-                    phoneCell.textContent = data.phone;
-
-                    const dateTimeCell = row.insertCell();
-                    dateTimeCell.textContent = `${data.date}`; // Combine date and time in one cell
-
-                    const messageCell = row.insertCell();
-                    messageCell.textContent = data.message || "No message";
+                    row.insertCell().textContent = data.name;
+                    row.insertCell().textContent = data.phone;
+                    row.insertCell().textContent = data.date;
+                    row.insertCell().textContent = data.message || "No message";
 
                     const actionCell = row.insertCell();
                     const deleteButton = document.createElement("button");
                     deleteButton.textContent = "Delete";
-                    deleteButton.addEventListener("click", () => {
+                    deleteButton.addEventListener("click", async () => {
                         const confirmDelete = confirm("Are you sure you want to delete this appointment?");
                         if (confirmDelete) {
-                            row.remove();
-                            alert("Appointment removed from the table!");
+                            try {
+                                const deleteUrl = `https://sheetdb.io/api/v1/vqe73unkshywj/phone/${data.phone}`; // Change 'phone' to a unique field
+
+                                const deleteResponse = await fetch(deleteUrl, { method: "DELETE" });
+
+                                if (deleteResponse.ok) {
+                                    row.remove();
+                                    alert("Appointment deleted successfully!");
+                                } else {
+                                    alert("Failed to delete appointment.");
+                                }
+                            } catch (error) {
+                                console.error("Error deleting appointment: ", error);
+                                alert("Error deleting appointment.");
+                            }
                         }
                     });
 
@@ -258,22 +263,17 @@
                 });
             } catch (error) {
                 console.error("Error fetching appointments: ", error);
-                alert("Error loading appointments. Please check the spreadsheet URL.");
+                alert("Error loading appointments.");
             }
         }
 
-        // Load appointments when the page loads
         document.addEventListener("DOMContentLoaded", loadAppointments);
 
-        // Logout logic
         document.getElementById("logoutButton").addEventListener("click", function() {
-            // Clear session or authentication data here
             alert("You have been logged out.");
-            // Redirect to login page after logout
-            window.location.href = "adminlogin.html"; // Redirect to login page
+            window.location.href = "adminlogin.html";
         });
 
-        // Toggle sidebar visibility
         document.getElementById("hamburgerMenu").addEventListener("click", function() {
             document.querySelector(".sidebar").classList.toggle("show");
         });
