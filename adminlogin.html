@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Login</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -90,7 +91,6 @@
     </style>
 </head>
 <body>
-
     <div class="login-container">
         <h2>Admin Login</h2>
         <div class="error-message" id="error-message">
@@ -113,28 +113,28 @@
     </div>
 
     <script>
-        // Predefined credentials for the admin login
-        const validWorkID = "admin123"; // Replace with your actual Work ID
-        const validPassword = "password123"; // Replace with your actual password
+        // Hashed credentials (pre-hashed for security)
+        const validWorkIDHash = "240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9"; // SHA-256 of "admin123"
+        const validPasswordHash = "ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f"; // SHA-256 of "password123"
 
-        // Function to handle login
+        // Function to hash input
+        function hashInput(input) {
+            return CryptoJS.SHA256(input).toString(CryptoJS.enc.Hex);
+        }
+
         document.getElementById("login-form").addEventListener("submit", function(event) {
-            event.preventDefault(); // Prevent the form from refreshing the page
+            event.preventDefault();
 
             const workID = document.getElementById("workID").value;
             const password = document.getElementById("password").value;
             const errorMessage = document.getElementById("error-message");
 
-            // Check if the entered workID and password match the predefined ones
-            if (workID === validWorkID && password === validPassword) {
-                // Redirect to admin.html on successful login
-                window.location.href = "admin.html"; // Replace with your actual admin page URL
+            if (hashInput(workID.toLowerCase()) === validWorkIDHash && hashInput(password) === validPasswordHash) {
+                window.location.href = "admin.html";
             } else {
-                // Show an error message if the credentials are incorrect
                 errorMessage.style.display = "block";
             }
         });
     </script>
-
 </body>
 </html>
