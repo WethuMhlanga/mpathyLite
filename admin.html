@@ -21,6 +21,8 @@
             padding: 20px;
             height: 100%;
             position: fixed;
+            transition: width 0.3s;
+            overflow: hidden;
         }
 
         .sidebar h2 {
@@ -48,6 +50,7 @@
             margin-left: 250px;
             padding: 20px;
             width: 100%;
+            transition: margin-left 0.3s;
         }
 
         h2 {
@@ -115,6 +118,54 @@
         .logout-btn:hover {
             background-color: #c82333;
         }
+
+        /* Hamburger menu for mobile */
+        .hamburger-menu {
+            display: none;
+            background-color: #333;
+            color: white;
+            font-size: 30px;
+            padding: 15px;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Sidebar responsive design */
+        @media screen and (max-width: 768px) {
+            .sidebar {
+                width: 0;
+                padding: 0;
+                height: 100%;
+                transition: width 0.3s;
+            }
+
+            .sidebar a {
+                display: none;
+            }
+
+            .sidebar.show {
+                width: 250px;
+            }
+
+            .sidebar.show a {
+                display: block;
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            .hamburger-menu {
+                display: block;
+                position: absolute;
+                top: 15px;
+                right: 20px;
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+        }
     </style>
 </head>
 <body>
@@ -127,6 +178,9 @@
         <a href="settings.html">Settings</a>
         <button class="logout-btn" id="logoutButton">Logout</button>
     </div>
+
+    <!-- Hamburger Menu -->
+    <button class="hamburger-menu" id="hamburgerMenu">&#9776;</button>
 
     <!-- Main content -->
     <div class="main-content">
@@ -148,6 +202,7 @@
                 </tbody>
             </table>
         </div>
+    </div>
 
     <script>
         // Predefined Google Spreadsheet URL
@@ -216,6 +271,11 @@
             alert("You have been logged out.");
             // Redirect to login page after logout
             window.location.href = "adminlogin.html"; // Redirect to login page
+        });
+
+        // Toggle sidebar visibility
+        document.getElementById("hamburgerMenu").addEventListener("click", function() {
+            document.querySelector(".sidebar").classList.toggle("show");
         });
     </script>
 
