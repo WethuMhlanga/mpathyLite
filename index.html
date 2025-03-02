@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mpathy - Clinical Services</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script defer src="script.js"></script>
+    <script defer src="appointments.js"></script>
+</head>
+<body>
+  <header id="navbar">
+    <div class="logo">
+        <img src="img/empathy logo.jpeg" alt="Logo">
+    </div>
+    <nav>
+        <!-- Hamburger Icon (Toggle Button) -->
+        <div class="hamburger" id="hamburger-toggle">&#9776;</div>
+
+        <!-- Menu Items -->
+        <ul class="menu">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="adminlogin.html" class="admin-link">Admin ONLY</a></li>
+        </ul>
+    </nav>
+</header>
+
+
+    
+    <section id="home" class="fade-section">
+      <div class="welcome-overlay">
+          <h1>How Can We Help You Feel Your Best?</h1>
+      </div>
+  </section>
+  
+    
+    <section id="about" class="fade-section">
+      <div class="about-container">
+          <div class="about-text">
+              <h2>About Mpathy Clinic</h2>
+              <p>Mpathy Clinic is dedicated to providing compassionate and professional healthcare services. 
+                  Our team of experienced therapists, psychiatrists, and medical professionals work together 
+                  to offer personalized care tailored to each patient’s needs.</p>
+              <p>With a focus on mental and physical well-being, we aim to create a safe space where individuals 
+                  can heal, grow, and thrive. Our approach integrates modern medical practices with holistic 
+                  wellness strategies to ensure the best possible outcomes for our patients.</p>
+          </div>
+          <div class="about-image">
+              <img src="img/empathy logo.jpeg" alt="Mpathy Clinic - Compassionate Healthcare">
+          </div>
+      </div>
+  </section>
+
+  <section id="services" class="fade-section">
+    <h2>Clinic Service Offerings</h2>
+    <p>We offer a variety of medical services to support the health and well-being of individuals at affordable rates.</p>
+    <div class="services-container">
+        <div class="service-card">
+            <i class="fa fa-child"></i>
+            <h3>Child Health (with medication)</h3>
+            <p>R100</p>
+        </div>
+        <div class="service-card">
+            <i class="fa fa-syringe"></i>
+            <h3>E.P.I (Immunization)</h3>
+            <p>R100</p>
+        </div>
+        <div class="service-card">
+            <i class="fa fa-hospital-user"></i>
+            <h3>IMCI (Integrated Management of Childhood Illnesses)</h3>
+            <p>R100</p>
+        </div>
+        <div class="service-card">
+            <i class="fa fa-users"></i>
+            <h3>Family Planning</h3>
+            <p>R150</p>
+        </div>
+        <div class="service-card">
+            <i class="fa fa-baby-carriage"></i>
+            <h3>Antenatal Care</h3>
+            <p>R300 (First Visit), R150 (Follow Up)</p>
+        </div>
+        <div class="service-card">
+            <i class="fa fa-heartbeat"></i>
+            <h3>Postnatal Care</h3>
+            <p>R200</p>
+        </div>
+        <div class="service-card">
+            <i class="fa fa-stethoscope"></i>
+            <h3>Cervical Screening (Papsmears)</h3>
+            <p>R200</p>
+        </div>
+        <div class="service-card">
+            <i class="fa fa-child"></i>
+            <h3>Curative Services for Children</h3>
+            <p>R100</p>
+        </div>
+        <div class="service-card">
+            <i class="fa fa-child"></i>
+            <h3>Curative Services for Adults</h3>
+            <p>R200</p>
+        </div>
+        <div class="service-card">
+            <i class="fa fa-heart"></i>
+            <h3>HCT (HIV Counseling and Testing)</h3>
+            <p>R50</p>
+        </div>
+        <div class="service-card">
+            <i class="fa fa-medkit"></i>
+            <h3>ART Initiation</h3>
+            <p>R200</p>
+        </div>
+    </div>
+</section>
+
+
+    
+  <section id="contact" class="fade-section">
+    <div class="contact-container">
+        <h2>Contact Us</h2>
+        <div class="contact-info">
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <p>Email: <a href="mailto:contact@mpathy.com">contact@mpathy.com</a></p>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <p>Phone: 082 706 5767</p>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <p>Address: 19 Freedom Nkosi Street Sidlamafa<br>
+                  Goodluck/Phosaville Taxi Rank<br>
+                  Kamhlushwa</p>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-clock"></i>
+                <p>Operating Hours: <br> Mon - Fri: 07:30 - 18:00 |<br> Sat: 08:00 - 16:00 |<br> Sun: By Appointment ONLY</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="appointment" class="fade-section">
+  <div class="appointment-container">
+      <h2>Book an Appointment</h2>
+      <p>Schedule your appointment with us today by filling out the form below.</p>
+      <form id="appointment-form">
+          <div class="form-group">
+              <label for="name">Full Name</label>
+              <input type="text" id="name" name="name" required>
+          </div>
+          <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone" required>
+          </div>
+          <div class="form-group">
+              <label for="date">Preferred Appointment Date</label>
+              <input type="date" id="date" name="date" required>
+          </div>
+          <div class="form-group">
+              <label for="time">Preferred Appointment Time</label>
+              <input type="time" id="time" name="time" min="08:00" max="17:00" required>
+          </div>
+          <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="4"></textarea>
+          </div>
+          <button type="submit">Submit Appointment</button>
+      </form>
+      <p id="confirmationMessage" style="display: none; color: green;">Appointment booked successfully!</p>
+  </div>
+</section>
+
+
+<footer>
+  <div class="footer-container">
+      <!-- Logo Section -->
+      <div class="footer-logo">
+          <img src="img/empathy logo.jpeg" alt="Mpathy Logo">
+          <p>Empowering Your Mental & Physical Well-being</p>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="footer-links">
+          <h3>Quick Links</h3>
+          <ul>
+              <li><a href="#home">Home</a></li>
+              <li><a href="#about">About Us</a></li>
+              <li><a href="#services">Services</a></li>
+              <li><a href="#contact">Contact</a></li>
+          </ul>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="footer-contact">
+          <h3>Contact Us</h3>
+          <p>Email: <a href="mailto:contact@mpathy.com">contact@mpathy.com</a></p>
+          <p>Phone: 082 706 5767</p>
+          <p>Address: 19 Freedom Nkosi Street Sidlamafa<br>
+            Goodluck/Phosaville Taxi Rank<br>
+            Kamhlushwa</p>
+      </div>
+
+      <!-- Social Media -->
+      <div class="footer-social">
+          <h3>Follow Us</h3>
+          <a href="#"><i class="fa fa-facebook"></i></a>
+          <a href="#"><i class="fa fa-twitter"></i></a>
+          <a href="#"><i class="fa fa-instagram"></i></a>
+          <a href="#"><i class="fa fa-linkedin"></i></a>
+      </div>
+  </div>
+
+  <p class="footer-bottom">&copy; 2025 Mpathy. All rights reserved.</p>
+</footer>
+
+
+
+</body>
+</html>
